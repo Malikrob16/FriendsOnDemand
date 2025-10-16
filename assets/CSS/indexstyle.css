@@ -1,0 +1,153 @@
+:root {
+  /* Background */
+  --darkblue: #000814;
+
+  /* Text color */
+  --textyellow: #FFD60A;
+
+  /* neutral color for variety might use in site */
+  --offwhite: #F5F5F5;
+
+  /* Container/Section color */
+  --lightblue: #001D3D;
+
+  /* Container/Section border color */
+  --lighterblue: #003566;
+
+  /* Smidge of border-radius */
+  --brad: 10px;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+	margin: 0 0 2.5rem;
+	font-family: "Roboto", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 100%;
+	line-height: 1.65;
+	color: var(--textyellow);
+	background-color: var(--darkblue);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 0.2rem;
+}
+
+figure {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+p {
+  margin: 0 0 1rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+p:last-of-type {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  display: inline-block;
+  padding: 4px 6px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  background: var(--textyellow);
+  z-index: -1;
+  transition: width 0.3s ease;
+}
+
+a:hover::before {
+  width: 100%;
+}
+
+a:hover {
+  color: var(--darkblue);
+}
+
+button {
+  margin: 1rem 0;
+  background: none;
+  border: none;
+  color: var(--textyellow);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  color: var(--darkblue);
+  background: var(--textyellow);
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  padding: 1rem;
+  background-color: var(--lightblue);
+  border: 2px solid var(--lighterblue);
+  border-radius: var(--brad);
+  box-shadow: 0 5px 10px var(--lighterblue);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  padding: 3rem;
+}
+
+.card {
+  background: var(--lightblue);
+  border: 2px solid var(--lighterblue);
+  border-radius: var(--brad);
+  box-shadow: 0 5px 10px var(--lighterblue);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.card h3 {
+  color: var(--textyellow);
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  color: var(--textyellow);
+  font-size: 0.95rem;
+}
