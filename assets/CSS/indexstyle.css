@@ -74,6 +74,7 @@ p:last-of-type {
   margin: 0;
 }
 
+/* Fill hover for anchor links */
 a {
   text-decoration: none;
   color: inherit;
@@ -131,8 +132,8 @@ button:hover {
   box-shadow: 0 5px 10px var(--lighterblue);
 }
 
-
 /* Test Card grid css */
+/* Will be removed when site structure is being added */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(260px, 1fr));
@@ -159,6 +160,7 @@ button:hover {
   font-size: 0.95rem;
 }
 
+/* Chat box styling */
 .chat-container {
   display: flex;
   flex-direction: column;
@@ -169,22 +171,39 @@ button:hover {
   height: 400px;
 }
 
+
 .chat-display {
   width: 100%;
   height: 90%;
   padding: 0.5rem;
   overflow: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
-.chat-input {
+/* This handles the message styling that appear in the chat display */
+.chat-message {
+  font-size: 1rem;
+  color: var(--offwhite);
+}
+
+.chat-username {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.chat-text {
+
+}
+
+.chat-time {
+  opacity: 0.6;
 }
 
 .chat-input {
   border-radius: var(--brad);
   background: var(--darkblue);
   border: 1px solid var(--offwhite);
-  color: var(--textyellow);
+  color: var(--offwhite);
   width: 100%;
   padding: 0.5rem;
   height: 2.3rem;
