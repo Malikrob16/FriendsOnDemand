@@ -1,3 +1,5 @@
 Fixes:
+-- Get user name to display properly in chat message
+-- Format chat message time correctly
 
 Ideas:

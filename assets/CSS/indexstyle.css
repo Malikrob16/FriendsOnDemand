@@ -29,6 +29,10 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100dvh;
   padding: 0;
 	margin: 0 0 2.5rem;
@@ -131,7 +135,7 @@ button:hover {
 /* Test Card grid css */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
   gap: 1.5rem;
   padding: 3rem;
 }
@@ -153,4 +157,35 @@ button:hover {
 .card p {
   color: var(--textyellow);
   font-size: 0.95rem;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  background: var(--lightblue);
+  border: 2px solid var(--lighterblue);
+  border-radius: var(--brad);
+  width: 400px;
+  height: 400px;
+}
+
+.chat-display {
+  width: 100%;
+  height: 90%;
+  padding: 0.5rem;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.chat-input {
+}
+
+.chat-input {
+  border-radius: var(--brad);
+  background: var(--darkblue);
+  border: 1px solid var(--offwhite);
+  color: var(--textyellow);
+  width: 100%;
+  padding: 0.5rem;
+  height: 2.3rem;
 }
