@@ -1,6 +1,10 @@
 Fixes:
 -- Get user name to display properly in chat message
 -- Format chat message time correctly
+-- Add username request popup instead of using prompt and alert for chatbox
 -- Adjust bots message timing
+-- Add videos to videos.json and dynamically load them into card-grid
+-- Adjust main section scale to fit middle of screen
+-- Add character seats and concession stand to footer so they appear across the bottom of the screen
 
 Ideas:
