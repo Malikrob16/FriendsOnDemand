@@ -1,0 +1,17 @@
+[
+  {"video": "./assets/videos/branch-in-water.mp4", "alt": "Branch sticking out of water", "thumbnail": ""},
+  {"video": "./assets/videos/branch-reflection.mp4", "alt": "Tree branches reflected on water", "thumbnail": ""},
+  {"video": "./assets/videos/calm-water-hills.mp4", "alt": "Calm water hills and clouds", "thumbnail": ""},
+  {"video": "./assets/videos/closeup-lake-ripples.mp4", "alt": "CLose up view of water ripples", "thumbnail": ""},
+  {"video": "./assets/videos/cloudy-hill.mp4", "alt": "Hills rolling over hills", "thumbnail": ""},
+  {"video": "./assets/videos/dock-ripples.mp4", "alt": "Dock surrounded by rippling water", "thumbnail": ""},
+  {"video": "./assets/videos/dusk-lake.mp4", "alt": "", "thumbnail": ""},
+  {"video": "./assets/videos/foreground-branch.mp4", "alt": "", "thumbnail": ""},
+  {"video": "./assets/videos/seagulls.mp4", "alt": "", "thumbnail": ""},
+  {"video": "./assets/videos/sky-through-branches.mp4", "alt": "", "thumbnail": ""},
+  {"video": "./assets/videos/soft-ripples.mp4", "alt": "", "thumbnail": ""},
+  {"video": "./assets/videos/sunrise-over-hill.mp4", "alt": "", "thumbnail": ""},
+  {"video": "./assets/videos/sunset-over-water.mp4", "alt": "", "thumbnail": ""},
+  {"video": "./assets/videos/tree-limbs.mp4", "alt": "", "thumbnail": ""},
+  {"video": "./assets/videos/waterfall.mp4", "alt": "", "thumbnail": ""}
+]

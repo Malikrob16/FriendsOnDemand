@@ -6,5 +6,6 @@ Fixes:
 -- Add videos to videos.json and dynamically load them into card-grid
 -- Adjust main section scale to fit middle of screen
 -- Add character seats and concession stand to footer so they appear across the bottom of the screen
+-- Finish dynamically loading videos from video.json and append them to card-grid
 
 Ideas:

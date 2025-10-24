@@ -1,3 +1,36 @@
+// Fetch videos from local JSON file with async await function
+// Console log videos fetched in object format
+async function fetchVideosfromJSON() {
+  try {
+    const response = await fetch('./assets/videos.json');
+    const data = await response.json();
+    console.log("Videos fetched from JSON: ", data);
+    return data.videos; // Assuming the JSON has a "videos" array
+  } catch (error) {
+    console.error("Error fetching videos:", error);
+  }
+}
+
+// Dynamically create video cards using videos fetched from JSON
+function CreateVideoCard(videoObject) {
+
+  const cardGrid = document.getElementById('card-grid');
+
+  const videoCard = document.createElement('div');
+  videoCard.className = 'card';
+
+  videoCard.innerHTML = `
+    <video width="320px" height="240px" controls>
+      <source src="${videoObject.video}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <h3>Test name</h3>
+    <p>This is a test description</p>
+    `;
+
+    cardGrid.innerHTML += `${videoCard.outerHTML}`;
+}
+
 function GetRandomMessageforChat() {
   const messages = 
   [
@@ -73,6 +106,9 @@ function ChatBoxAugmenting() {
     }
   });
 
+  // Start bots random messages when the user clicks on the chat input box
+  chatInput.addEventListener("click", TriggerRandomBotMessage);
+
   // Executes when enter key is released
   chatInput.addEventListener("keyup", () => {
 
@@ -99,6 +135,7 @@ function ChatBoxAugmenting() {
     }
   });
 
+  // This functions lets the bot send random messages at random intervals
   function TriggerRandomBotMessage() {
     const randomDelay = Math.floor(Math.random() * 8000) + 4000; // random between 4-12 seconds
 
@@ -121,11 +158,10 @@ function ChatBoxAugmenting() {
         TriggerRandomBotMessage(); // Schedule next bot message
     }, randomDelay);
   }
-
-  TriggerRandomBotMessage();
 }
 
 document.addEventListener("DOMContentLoaded", function() {
   console.log("DOM content loaded");
   ChatBoxAugmenting();
+  fetchVideosfromJSON();
 });
