@@ -7,5 +7,7 @@ Fixes:
 -- Adjust main section scale to fit middle of screen
 -- Add character seats and concession stand to footer so they appear across the bottom of the screen
 -- Finish dynamically loading videos from video.json and append them to card-grid
+-- Have initial video cards on the projector screen be images then once the card is clicked have the entire projector be the clicked video
+-- Give each json video a description and title to be loaded
 
 Ideas:

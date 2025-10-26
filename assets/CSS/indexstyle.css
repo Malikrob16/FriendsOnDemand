@@ -172,6 +172,12 @@ button:hover {
   border-radius: 8px;
 }
 
+.card-video {
+  width: 100%;
+  height: auto;
+  border-radius: var(--brad);
+}
+
 .card h3 {
   color: var(--textyellow);
   margin-bottom: 0.5rem;

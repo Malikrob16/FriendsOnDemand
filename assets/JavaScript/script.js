@@ -13,22 +13,34 @@ async function fetchVideosfromJSON() {
 
 // Dynamically create video cards using videos fetched from JSON
 function CreateVideoCard(videoObject) {
-
-  const cardGrid = document.getElementById('card-grid');
-
   const videoCard = document.createElement('div');
   videoCard.className = 'card';
 
   videoCard.innerHTML = `
-    <video width="320px" height="240px" controls>
+    <video class="card-video" width="320px" height="240px" controls>
       <source src="${videoObject.video}" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-    <h3>Test name</h3>
-    <p>This is a test description</p>
+    <h3>${videoObject.title || "Untitled Video"}</h3>
+    <p>${videoObject.description || "No description available."}</p>
     `;
 
-    cardGrid.innerHTML += `${videoCard.outerHTML}`;
+    return videoCard;
+}
+
+// Load and Display videos in grid
+async function displayVideos() {
+  const videos = await fetchVideosfromJSON();
+  const cardGrid = document.getElementById('card-grid');
+
+  if (videos && videos.length > 0) {
+    videos.forEach(video => {
+      const card = CreateVideoCard(video);
+      cardGrid.appendChild(card); // append card to card-grid
+    });
+  } else {
+    cardGrid.innerHTML = "<p>No videos available.</p>";
+  }
 }
 
 function GetRandomMessageforChat() {
@@ -163,5 +175,5 @@ function ChatBoxAugmenting() {
 document.addEventListener("DOMContentLoaded", function() {
   console.log("DOM content loaded");
   ChatBoxAugmenting();
-  fetchVideosfromJSON();
+  displayVideos();
 });
