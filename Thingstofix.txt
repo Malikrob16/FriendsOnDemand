@@ -9,5 +9,9 @@ Fixes:
 -- Finish dynamically loading videos from video.json and append them to card-grid
 -- Have initial video cards on the projector screen be images then once the card is clicked have the entire projector be the clicked video
 -- Give each json video a description and title to be loaded
+-- Get video thumbnails and set them in create card function
+-- Each card is a button which will open the selected video to cover the entire projector screen while keeping the character chairs over top (This will give the Mystery Science Theater 3000 styling.)
+-- Fix chat box username verification
+-- Make a div for character area that overlaps projector screen so that the scroll does no effect video selection. (Give character area div pointer-events: none; Stops pointer interactions)
 
 Ideas:

@@ -13,7 +13,7 @@ async function fetchVideosfromJSON() {
 
 // Dynamically create video cards using videos fetched from JSON
 function CreateVideoCard(videoObject) {
-  const videoCard = document.createElement('div');
+  const videoCard = document.createElement('button');
   videoCard.className = 'card';
 
   videoCard.innerHTML = `
@@ -106,16 +106,35 @@ function ChatBoxAugmenting() {
 
   const chatDisplay = document.getElementById('chat-display');
   const chatInput = document.getElementById('chat-input');
+  const chatHeader = document.getElementById('chat-header');
 
   // Store userName variable for session
   let userName = null;
 
+  function UpdateChatHeader() {
+    if (!userName || userName.trim() === "") {
+      chatHeader.innerHTML = `
+        <p>Click or Tap Chat Here to enter a username!</p>
+      `;
+    } else {
+      chatHeader.innerHTML = `
+        <p>Hello ${userName}!</p>
+      `;
+    }
+  }
+
+  // Set initial chat header
+  UpdateChatHeader(); 
+
   // When user clicks chat input box prompt them to enter a username.
-  // Only run click event is there is no stored username. (Ensures user can click off of chat box and click back without being prompted for username again)
+  // Only run click event if there is no stored username. (Ensures user can click off of chat box and click back without being prompted for username again)
   chatInput.addEventListener("click", () => {
     if (!userName) {
       userName = RequestUserName();
     }
+
+    // call function to update header with username
+    UpdateChatHeader();
   });
 
   // Start bots random messages when the user clicks on the chat input box
