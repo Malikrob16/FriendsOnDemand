@@ -17,10 +17,9 @@ function CreateVideoCard(videoObject) {
   videoCard.className = 'card';
 
   videoCard.innerHTML = `
-    <video class="card-video" width="320px" height="240px" controls>
-      <source src="${videoObject.video}" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+    <figure class="card-video">
+      <img loading="lazy" src="${videoObject.thumbnail}" alt="${videoObject.alt}" || "Thumbnail unavailable">
+    <figure>
     <h3>${videoObject.title || "Untitled Video"}</h3>
     <p>${videoObject.description || "No description available."}</p>
     `;
@@ -98,6 +97,9 @@ function GetCurrentTime() {
 
   return correctTime;
 }
+
+// When video card is clicked set selected video to cover the entire projector screen.
+// function SetVideoToPlay() {}
 
 // This function will handle the input and output of the chat box.
 // It will take the users input and create a message to display in the chat box.
