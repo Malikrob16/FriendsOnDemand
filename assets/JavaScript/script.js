@@ -1,3 +1,59 @@
+function ToggleLightSwitch() {
+  const lightSwitch = document.getElementById('light-switch');
+
+  lightSwitch.addEventListener('click', () => {
+    lightSwitch.classList.toggle('on');
+    console.log("Light switch pressed. Turning lights off.");
+
+    if (lightSwitch.classList.contains('on')) {
+
+      document.body.classList.add('dark-mode');
+
+      // Light switch is on
+      lightSwitch.innerHTML= `
+      <svg aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        width="34px"
+        height="34px"
+        viewBox="0 0 24 24"
+        fill="var(--textyellow)"
+        stroke="#000000"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        >
+        <path d="M18 6c0 2-2 2-2 4v10a2 2 0 01-2 2h-4a2 2 0 01-2-2V10c0-2-2-2-2-4V2h12z" />
+        <line x1="6" y1="6" x2="18" y2="6" />
+        <line x1="12" y1="12" x2="12" y2="12" />
+      </svg>
+      `;
+    } else {
+
+      document.body.classList.remove('dark-mode');
+
+      // Light switch is off
+      lightSwitch.innerHTML= `
+        <svg aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="34px"
+          height="34px"
+          viewBox="0 0 24 24"
+          fill="var(--textyellow)"
+          stroke="#000000"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          >
+          <path d="M16 16v4a2 2 0 01-2 2h-4a2 2 0 01-2-2V10c0-2-2-2-2-4" />
+          <path d="M7 2h11v4c0 2-2 2-2 4v1" />
+          <line x1="11" y1="6" x2="18" y2="6" />
+          <line x1="2" y1="2" x2="22" y2="22" />
+        </svg>
+      `;
+    }
+  });
+}
+
 // Fetch videos from local JSON file with async await function
 // Console log videos fetched in object format
 async function fetchVideosfromJSON() {
@@ -15,11 +71,12 @@ async function fetchVideosfromJSON() {
 function CreateVideoCard(videoObject) {
   const videoCard = document.createElement('button');
   videoCard.className = 'card';
+  videoCard.id = 'card';
 
   videoCard.innerHTML = `
     <figure class="card-video">
       <img loading="lazy" src="${videoObject.thumbnail}" alt="${videoObject.alt}" || "Thumbnail unavailable">
-    <figure>
+    </figure>
     <h3>${videoObject.title || "Untitled Video"}</h3>
     <p>${videoObject.description || "No description available."}</p>
     `;
@@ -40,6 +97,22 @@ async function displayVideos() {
   } else {
     cardGrid.innerHTML = "<p>No videos available.</p>";
   }
+}
+
+// Create element to display on the projector screen
+function displayClickedVideo() {
+  return console.log("Function was called");
+}
+
+// When video card is clicked set selected video to cover the entire projector screen.
+function SetVideoToPlay() {
+  const cardGrid = document.getElementById('card-grid');
+  cardGrid.addEventListener('click', (e) => {
+    const card = e.target.closest('.card');
+    if (!card) return; // User clicked outside of a card
+    console.log("Video was clicked", card);
+    displayClickedVideo();
+  });
 }
 
 function GetRandomMessageforChat() {
@@ -97,9 +170,6 @@ function GetCurrentTime() {
 
   return correctTime;
 }
-
-// When video card is clicked set selected video to cover the entire projector screen.
-// function SetVideoToPlay() {}
 
 // This function will handle the input and output of the chat box.
 // It will take the users input and create a message to display in the chat box.
@@ -195,6 +265,8 @@ function ChatBoxAugmenting() {
 
 document.addEventListener("DOMContentLoaded", function() {
   console.log("DOM content loaded");
+  ToggleLightSwitch();
   ChatBoxAugmenting();
   displayVideos();
+  SetVideoToPlay();
 });

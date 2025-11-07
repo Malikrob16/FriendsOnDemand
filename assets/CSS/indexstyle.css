@@ -47,6 +47,16 @@ body {
 	background-color: var(--darkblue);
 }
 
+/* body.dark-mode {
+  background-color: var(--darkblue);
+  color: var(--textyellow);
+}
+
+body:not(.dark-mode) {
+  background-color: var(--offwhite);
+  color: var(--lightblue);
+} */
+
 h1,
 h2,
 h3,
@@ -121,10 +131,8 @@ button:hover {
 }
 
 .header {
+  position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   width: 100%;
   background-color: var(--lightblue);
   border: 2px solid var(--lighterblue);
@@ -132,7 +140,43 @@ button:hover {
   box-shadow: 0 5px 10px var(--lighterblue);
 }
 
+.site-name {
+  position: relative;
+}
+
+.light-switch {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 2rem;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  background: var(--lighterblue);
+  border: 2px solid var(--textyellow);
+  box-shadow: 0 0 15px var(--textyellow);
+  transition: all 0.5s ease;
+}
+
+.light-switch:hover {
+  transform: scale(1.2);
+}
+
+.light-switch.on {
+  background: var(--textyellow);
+  border: 2px solid var(--darkblue);
+  box-shadow: 0 0 25px var(--textyellow);
+  transform: rotate(20deg);
+}
+
+.light-switch.on:hover {
+  box-shadow: 0 0 25px var(--textyellow);
+  transform: rotate(0deg) scale(1.2);
+}
+
 .main {
+  position: relative;
   display: flex;
   width: 100vw;
   margin: 0;
@@ -143,7 +187,7 @@ button:hover {
 .projector-screen {
   position: relative;
   width: 70%;
-  height: 53rem;
+  height: 52rem;
   overflow: hidden;
   overflow-y: auto;
   background: linear-gradient(#E6E6E6, #E0E0E0); /* or your chosen offwhite */
@@ -198,21 +242,23 @@ button:hover {
 
 /* Character Area */
 .character-area {
-  position: sticky;
+  position: absolute;
+  bottom: 5px;
+  left: 0;
   display: flex;
   justify-content: space-evenly;
   height: 5rem;
-  width: 100%;
-  bottom: 0;
-  z-index: 2;
+  width: 70%;
+  z-index: 3;
+  gap: 0.2rem;
   pointer-events: none;
 }
 
 .character-chair {
-  width: 12rem;
-  height: 12rem;
+  width: 20rem;
+  height: 100px;
   text-align: center;
-  border-radius: 50%;
+  border-radius: 50% 50% 0 0;
   background: black;
 }
 
