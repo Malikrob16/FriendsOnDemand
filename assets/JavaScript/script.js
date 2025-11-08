@@ -6,15 +6,14 @@ function ToggleLightSwitch() {
     console.log("Light switch pressed. Turning lights off.");
 
     if (lightSwitch.classList.contains('on')) {
-
-      document.body.classList.add('dark-mode');
+      document.body.classList.remove('dark-mode');
 
       // Light switch is on
       lightSwitch.innerHTML= `
       <svg aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
-        width="34px"
-        height="34px"
+        width="24px"
+        height="24px"
         viewBox="0 0 24 24"
         fill="var(--textyellow)"
         stroke="#000000"
@@ -29,14 +28,14 @@ function ToggleLightSwitch() {
       `;
     } else {
 
-      document.body.classList.remove('dark-mode');
+      document.body.classList.add('dark-mode');
 
       // Light switch is off
       lightSwitch.innerHTML= `
         <svg aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
-          width="34px"
-          height="34px"
+          width="24px"
+          height="24px"
           viewBox="0 0 24 24"
           fill="var(--textyellow)"
           stroke="#000000"
@@ -52,6 +51,30 @@ function ToggleLightSwitch() {
       `;
     }
   });
+
+  // Initialize site to dark mode
+    document.body.classList.add('dark-mode');
+    lightSwitch.classList.remove('on');
+
+    // Set starting switch SVG to off (dark mode)
+    lightSwitch.innerHTML=`
+        <svg aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24px"
+          height="24px"
+          viewBox="0 0 24 24"
+          fill="var(--textyellow)"
+          stroke="#000000"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          >
+          <path d="M16 16v4a2 2 0 01-2 2h-4a2 2 0 01-2-2V10c0-2-2-2-2-4" />
+          <path d="M7 2h11v4c0 2-2 2-2 4v1" />
+          <line x1="11" y1="6" x2="18" y2="6" />
+          <line x1="2" y1="2" x2="22" y2="22" />
+        </svg>
+    `;
 }
 
 // Fetch videos from local JSON file with async await function
@@ -134,15 +157,21 @@ function RequestUserName() {
 
   let userName = prompt("Enter a username so your friends can address you properly.");
 
-  if (userName === null) {
-    alert("Your user name can not be blank. Please enter a user name");
-
-    let userName = prompt("Enter a username so your friends can address you properly.");
+  // Request username till user enters a non-empty username or they cancel the prompt.
+  while(userName !== null && userName.trim() === "")  {
+    alert("Your username cannot be blank. Please enter a username.");
+    userName = prompt("Enter a username so your friends can address you properly.");
   }
 
-  console.log(userName);
+  // If user cancels just return null so caller can handle it
+  if (userName === null) {
+    console.log("User cancelled the username prompt");
+    return null;
+  }
 
-  return userName;
+  console.log("Username entered:", userName);
+
+  return userName.trim();
 }
 
 function GetCurrentTime() {
@@ -203,6 +232,9 @@ function ChatBoxAugmenting() {
   chatInput.addEventListener("click", () => {
     if (!userName) {
       userName = RequestUserName();
+
+      // If user cancels prompt, do not update header
+      if (userName === null) return;
     }
 
     // call function to update header with username
